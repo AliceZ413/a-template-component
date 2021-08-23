@@ -432,6 +432,13 @@ destroy@~1.0.4:
   resolved "https://repo.huaweicloud.com/repository/npm/destroy/-/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"
   integrity sha1-l4hXRCxEdJ5CBmE+N5RiBYJqvYA=
 
+dom7@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.nlark.com/dom7/download/dom7-3.0.0.tgz#b861ce5d67a6becd7aaa3ad02942ff14b1240331"
+  integrity sha1-uGHOXWemvs16qjrQKUL/FLEkAzE=
+  dependencies:
+    ssr-window "^3.0.0-alpha.1"
+
 ee-first@1.1.1:
   version "1.1.1"
   resolved "https://repo.huaweicloud.com/repository/npm/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
@@ -985,6 +992,11 @@ sourcemap-codec@^1.4.4:
   resolved "https://repo.huaweicloud.com/repository/npm/sourcemap-codec/-/sourcemap-codec-1.4.8.tgz#ea804bd94857402e6992d05a38ef1ae35a9ab4c4"
   integrity sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==
 
+ssr-window@^3.0.0, ssr-window@^3.0.0-alpha.1:
+  version "3.0.0"
+  resolved "https://registry.nlark.com/ssr-window/download/ssr-window-3.0.0.tgz?cache=0&sync_timestamp=1628092716328&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fssr-window%2Fdownload%2Fssr-window-3.0.0.tgz#fd5b82801638943e0cc704c4691801435af7ac37"
+  integrity sha1-/VuCgBY4lD4MxwTEaRgBQ1r3rDc=
+
 "statuses@>= 1.4.0 < 2":
   version "1.5.0"
   resolved "https://repo.huaweicloud.com/repository/npm/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
@@ -1018,6 +1030,14 @@ supports-color@^6.1.0:
   integrity sha512-qe1jfm1Mg7Nq/NSh6XE24gPXROEVsWHxC1LIx//XNlD9iw7YZQGjZNjYN7xGaEG6iKdA8EtNFW6R0gjnVXp+wQ==
   dependencies:
     has-flag "^3.0.0"
+
+swiper@^6.8.4:
+  version "6.8.4"
+  resolved "https://registry.nlark.com/swiper/download/swiper-6.8.4.tgz?cache=0&sync_timestamp=1629734156547&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fswiper%2Fdownload%2Fswiper-6.8.4.tgz#938fed4144f4d7952fbf9c44e5832d133a4de794"
+  integrity sha1-k4/tQUT015Uvv5xE5YMtEzpN55Q=
+  dependencies:
+    dom7 "^3.0.0"
+    ssr-window "^3.0.0"
 
 to-fast-properties@^2.0.0:
   version "2.0.0"

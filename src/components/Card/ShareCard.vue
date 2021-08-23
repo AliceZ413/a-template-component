@@ -11,19 +11,32 @@
             </div>
         </div>
         <div class="content">
-            <img src="@/assets/images/BeibeiJia1.png" alt="">
+            <!-- <img src="@/assets/images/BeibeiJia1.png" alt="" /> -->
+            <swiper
+                :pagination="{ 'dynamicBullets': true }"
+            >
+                <swiper-slide v-for="(pic, index) in picList" :key="'pic_' + index">
+                    <img :src="pic" alt="" />
+                </swiper-slide>
+            </swiper>
         </div>
         <div class="info">
             <div class="info-l">
                 <img class="share btn" src="@/assets/images/icon-share.png" alt="">
             </div>
             <div class="info-r">
-                <img class="share btn" src="@/assets/images/icon-like.png" alt="">
-                <div>637</div>
-                <img class="share btn" src="@/assets/images/icon-collection.png" alt="">
-                <div>96</div>
-                <img class="share btn" src="@/assets/images/icon-pinlun.png" alt="">
-                <div>46</div>
+                <div class="info-r-btn">
+                    <img class="share btn" src="@/assets/images/icon-like.png" alt="" @click="handleBeLike">
+                    <div>{{ likeNum }}</div>
+                </div>
+                <div class="info-r-btn">
+                    <img class="collect btn" src="@/assets/images/icon-collection.png" alt="">
+                    <div>{{ collectNum }}</div>
+                </div>
+                <div class="info-r-btn">
+                    <img class="common btn" src="@/assets/images/icon-pinlun.png" alt="">
+                    <div>{{ commonNum }}</div>
+                </div>
             </div>
         </div>
         <div class="desc">
@@ -33,11 +46,59 @@
 </template>
 
 <script>
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/swiper.less';
+import "swiper/components/pagination/pagination.min.css";
+import SwiperCore, {
+  Pagination
+} from 'swiper/core';
+import { computed } from '@vue/reactivity';
+SwiperCore.use([Pagination]);
 export default {
-    data () {
+    components: {
+        Swiper,
+        SwiperSlide
+    },
+    props: {
+        list: {
+            type: Array,
+            default: () => []
+        },
+        likeNum: {
+            type: Number,
+            default: 0
+        },
+        collectNum: {
+            type: Number,
+            default: 0
+        },
+        commonNum: {
+            type: Number,
+            default: 0
+        }
+    },
+    setup(props, ctx) {
+        const picList = computed(() => {
+            return props.list;
+        });
+        const likeNum = computed(() => {
+            return props.likeNum;
+        });
+        const collectNum = computed(() => {
+            return props.collectNum;
+        });
+        const commonNum = computed(() => {
+            return props.commonNum;
+        });
+        const handleBeLike = () => {
+            ctx.emit('on-like');
+        };
         return {
-
- 
+            picList,
+            likeNum,
+            collectNum,
+            commonNum,
+            handleBeLike,
         }
     }
 }
@@ -84,7 +145,12 @@ export default {
             }
         }
         .content {
+            width: 100%;
+            margin-top: 6px;
+            box-shadow: 0 4px 10px 0 rgba(197, 197, 197, .5);
+            margin-bottom: 10px;
             img {
+                display: block;
                 width: 100%;
                 height: 470px;
                 object-fit: contain;
@@ -102,13 +168,22 @@ export default {
                 align-items: center;
             }
             .info-r {
-                display: flex;
-                align-items: center;
+                display: inline-block;
+                height: 20px;
+                line-height: 20px;
                 img {
                     margin-left: 15px;
+                    display: inline-block;
+                    vertical-align: middle;
                 }
-                div {
-                    margin-left: 5px;
+                .info-r-btn {
+                    display: inline-block;
+                    vertical-align: middle;
+                    div {
+                        display: inline-block;
+                    vertical-align: middle;
+                        margin-left: 4px;
+                    }
                 }
             }
             .btn {

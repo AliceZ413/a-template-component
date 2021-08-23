@@ -24,7 +24,12 @@
                 <span class="triggle">{{ toggle3 ? '收起' : '展开' }}</span>
             </div>
             <div :class="['lg-card share', toggle3 ? 'open' : 'close']">
-                <ShareCard></ShareCard>
+                <ShareCard
+                    :list="list"
+                    :likeNum="likeNum"
+                    :collectNum="collectNum" 
+                    :commonNum="commonNum" 
+                    @on-like="handleBeLike"></ShareCard>
             </div>
         </div>
     </div>
@@ -33,6 +38,11 @@
 <script>
 import LCard from '@/components/Card/LCard.vue';
 import ShareCard from '@/components/Card/ShareCard.vue';
+import BeibeiJia1 from '@/assets/images/BeibeiJia1.png';
+import BeibeiJia2 from '@/assets/images/BeibeiJia2.png';
+import BeibeiJia3 from '@/assets/images/BeibeiJia3.jpg';
+import BeibeiJia4 from '@/assets/images/BeibeiJia4.png';
+import BeibeiJia5 from '@/assets/images/BeibeiJia5.png';
 import { reactive, toRefs } from 'vue';
 export default {
     components: {
@@ -48,9 +58,23 @@ export default {
             toggle2: false,
 
             toggle3: false,
+            list: [
+                BeibeiJia1,
+                BeibeiJia2,
+                BeibeiJia3,
+                BeibeiJia4,
+                BeibeiJia5
+            ],
+            likeNum: 637,
+            collectNum: 96,
+            commonNum: 46,
         });
+        const handleBeLike = (val) => {
+            state.likeNum += 1;
+        };
         return {
             ...toRefs(state),
+            handleBeLike,
         }
     }
 }
@@ -86,7 +110,7 @@ export default {
             height: 0;
         }
         &.share.open {
-            height: auto;
+            height: 600px;
         }
     }
 </style>
